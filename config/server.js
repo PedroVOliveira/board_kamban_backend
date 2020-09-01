@@ -2,14 +2,15 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import Knex from 'knex';
-import assignResquestMiddleware from '../src/middlewares/assignResquestMiddleware';
 import fs from 'fs'
 import cors from 'cors'
-
 import handlerErroMiddleware from '../src/middlewares/handlerErroMiddleware'
+import assignResquestMiddleware from '../src/middlewares/assignResquestMiddleware';
 import env from './environments'
 import http from 'http'
 import path from 'path'
+import compression from 'compression'
+import multiparty from 'connect-multiparty'
 
 //instancia
 const app = express()
@@ -35,11 +36,10 @@ knex.on('query',(query)=>{
 // Middlewares
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(compression())
 app.use(cors())
-
-// app.use(assignResquestMiddleware)
-
-//create folders default
+app.use(multiparty())
+app.use(assignResquestMiddleware)
 
 //assets
 app.use(express.static('./src/public'))
@@ -59,7 +59,7 @@ function startup(port){
     return new Promise(async (resolve, reject)=>{
         env.server.port = port != null ? port : env.server.port
         server.listen(env.server.port,()=>{
-            // app.use(handlerErroMiddleware);
+            app.use(handlerErroMiddleware);
             resolve({
                 url:env.server.url,
                 server:server

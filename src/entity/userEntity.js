@@ -6,7 +6,7 @@ knex.schema.hasTable('users').then(function(exists) {
       table.increments('id').primary();
       table.string('name').notNullable();
       table.string('email').unique();
-      table.string('password').notNullable();
+      table.string('senha').notNullable();
     });
   }
 });

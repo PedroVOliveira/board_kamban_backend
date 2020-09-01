@@ -27,5 +27,6 @@ export default {
   },
   security: {
     secret: process.env.API_SECRET || `teste`,
+    saltRounds: process.env.SALT_ROUNDS || 10
   },
 }
