@@ -1,0 +1,51 @@
+{
+  "name": "trello-api",
+  "version": "0.0.1",
+  "description": "Projeto criado para teste!",
+  "author": "Ismael Alves <cearaismael1997@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js",
+    "test": "babel-node jest.startup.js --forceExit --detectOpenHandles --maxWorkers=1 --testTimeout=50000 --coverage",
+    "secure-mode": "babel-node jest.startup.js --forceExit --detectOpenHandles --watchAll --maxWorkers=1 --testTimeout=50000"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.5",
+    "knex-migrate": "^1.7.4",
+    "mysql": "^2.18.1",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/runtime": "^7.7.4",
+    "babel-jest": "^26.0.1",
+    "husky": "^3.1.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.1",
+    "supertest": "^4.0.2"
+  },
+  "snyk": true
+}
